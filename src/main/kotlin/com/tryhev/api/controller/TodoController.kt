@@ -10,28 +10,28 @@ import java.util.*
 class TodoController {
 
     @GetMapping(
-            name = "Get list of Todos.",
+            name = "Get list of Todos",
             produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun getTodos(): List<Todo> {
         return listOf(
                 Todo(
                         todoId = UUID.randomUUID().toString(),
-                        title = "First Todo item.",
-                        message = "This is a message from first todo item.",
+                        title = "First Todo item",
+                        message = "This is a message from first todo item",
                         schedule = System.currentTimeMillis()
                 ),
                 Todo(
                         todoId = UUID.randomUUID().toString(),
-                        title = "Second Todo item.",
-                        message = "This is a message from second todo item.",
+                        title = "Second Todo item",
+                        message = "This is a message from second todo item",
                         schedule = System.currentTimeMillis()
                 )
         )
     }
 
     @PostMapping(
-            name = "Add a new Todo item.",
+            name = "Add a new Todo item",
             value = ["/add"],
             consumes = [MediaType.APPLICATION_JSON_VALUE],
             produces = [MediaType.APPLICATION_JSON_VALUE]
@@ -44,7 +44,7 @@ class TodoController {
     }
 
     @DeleteMapping(
-            name = "Delete todo by todoId.",
+            name = "Delete todo by todoId",
             value = ["/delete/{todoId}"],
             produces = [MediaType.APPLICATION_JSON_VALUE]
     )
@@ -53,11 +53,11 @@ class TodoController {
     ): String {
         // TODO: impl delete todo method by using todo service
         println("Deleting todo item...")
-        return "Success."
+        return "Success"
     }
 
     @PutMapping(
-            name = "Update todo item.",
+            name = "Update todo item",
             value = ["/update"],
             consumes = [MediaType.APPLICATION_JSON_VALUE],
             produces = [MediaType.APPLICATION_JSON_VALUE]

@@ -12,7 +12,7 @@ import java.util.*
 class NoteController {
 
     @GetMapping(
-            name = "Get all notes.",
+            name = "Get all notes",
             produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun getNodes(): List<Note> {
@@ -31,7 +31,7 @@ class NoteController {
     }
 
     @GetMapping(
-            name = "Get note by noteId.",
+            name = "Get note by noteId",
             value = ["/{noteId}"],
             produces = [MediaType.APPLICATION_JSON_VALUE]
     )
@@ -42,7 +42,7 @@ class NoteController {
     }
 
     @PostMapping(
-            name = "Add note.",
+            name = "Add note",
             value = ["/add"],
             consumes = [MediaType.APPLICATION_JSON_VALUE],
             produces = [MediaType.APPLICATION_JSON_VALUE]
@@ -64,11 +64,11 @@ class NoteController {
             @PathVariable(name = "noteId") noteId: String
     ): String {
         // TODO: impl deleting note by noteID
-        return "Success."
+        return "Success"
     }
 
     @PutMapping(
-            name = "Update note.",
+            name = "Update note",
             value = ["/update"],
             consumes = [MediaType.APPLICATION_JSON_VALUE],
             produces = [MediaType.APPLICATION_JSON_VALUE]
