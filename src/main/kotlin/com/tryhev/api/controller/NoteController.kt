@@ -1,6 +1,8 @@
 package com.tryhev.api.controller
 
 import com.tryhev.api.data.Note
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
@@ -11,11 +13,14 @@ import java.util.*
 @EnableAutoConfiguration
 class NoteController {
 
+    private val logger = LoggerFactory.getLogger(javaClass)
+
     @GetMapping(
             name = "Get all notes",
             produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun getNodes(): List<Note> {
+        logger.debug("This is log message that should be removed!")
         return listOf(
                 Note(
                         noteId = UUID.randomUUID().toString(),
