@@ -3,10 +3,7 @@ package com.tryhev.api.controller
 import com.tryhev.api.data.Note
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.http.MediaType
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
@@ -34,11 +31,53 @@ class NoteController {
     }
 
     @GetMapping(
-            name = "Get current note.",
+            name = "Get note by noteId.",
             value = ["/{noteId}"],
             produces = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun getNode(@PathVariable noteId: String): String {
+    fun getNode(
+            @PathVariable(name = "noteId") noteId: String
+    ): String {
         return "The note Id is: ".plus(noteId)
+    }
+
+    @PutMapping(
+            name = "Add note.",
+            value = ["/add"],
+            consumes = [MediaType.APPLICATION_JSON_VALUE],
+            produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun addNote(
+        note: Note
+    ): Note {
+        note.noteId = UUID.randomUUID().toString()
+        return note
+    }
+
+    @DeleteMapping(
+            name = "Delete note by noteId",
+            value = ["/delete/{noteId}"],
+            produces = [MediaType.APPLICATION_JSON_VALUE]
+
+    )
+    fun deleteNote(
+            @PathVariable(name = "noteId") noteId: String
+    ): String {
+        // TODO: impl deleting note by noteID
+        return "Success."
+    }
+
+    @PutMapping(
+            name = "Update note.",
+            value = ["/update"],
+            consumes = [MediaType.APPLICATION_JSON_VALUE],
+            produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun updateNote(
+            @RequestBody note: Note
+    ): Note {
+        note.title.plus(" [updated]")
+        note.message.plus(" [updated]")
+        return note
     }
 }
