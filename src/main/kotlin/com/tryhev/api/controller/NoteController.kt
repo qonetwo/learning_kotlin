@@ -41,7 +41,7 @@ class NoteController {
         return "The note Id is: ".plus(noteId)
     }
 
-    @PutMapping(
+    @PostMapping(
             name = "Add note.",
             value = ["/add"],
             consumes = [MediaType.APPLICATION_JSON_VALUE],
