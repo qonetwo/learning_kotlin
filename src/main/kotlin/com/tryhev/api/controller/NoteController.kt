@@ -13,7 +13,9 @@ import java.util.*
 @EnableAutoConfiguration
 class NoteController {
 
-    private val logger = LoggerFactory.getLogger(javaClass)
+    companion object {
+        private val logger = LoggerFactory.getLogger(NoteController::class.java)
+    }
 
     @GetMapping(
             name = "Get all notes",
